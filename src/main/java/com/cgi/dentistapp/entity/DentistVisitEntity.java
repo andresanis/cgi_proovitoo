@@ -14,17 +14,19 @@ public class DentistVisitEntity {
     private long dentistId;
     @Column(name="DENTISTNAME", length=50, nullable = false)
     private String dentistName;
-    @Column(name = "VISITTIME", nullable = false)
+    @Column(name = "VISITDATE", nullable = false)
     @Temporal(TemporalType.DATE)
-    private Date visitTime;
+    private Date visitDate;
+    @Column(name = "VISITTIME", length=5, nullable = false)
+    private String visitTime;
 
 
-    public Date getVisitTime() {
-        return visitTime;
+    public Date getVisitDate() {
+        return visitDate;
     }
 
-    public void setVisitTime(Date visitTime) {
-        this.visitTime = visitTime;
+    public void setVisitDate(Date visitTime) {
+        this.visitDate = visitTime;
     }
 
     public String getDentistName() {
@@ -41,5 +43,13 @@ public class DentistVisitEntity {
 
     public void setDentistId(long dentistId) {
         this.dentistId = dentistId;
+    }
+
+    public String getVisitTime() {
+        return visitTime;
+    }
+
+    public void setVisitTime(String visitTime) {
+        this.visitTime = visitTime;
     }
 }

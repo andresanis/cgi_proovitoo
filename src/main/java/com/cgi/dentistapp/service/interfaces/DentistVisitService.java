@@ -8,5 +8,5 @@ import java.util.Date;
 public interface DentistVisitService {
 
 
-    void addVisit(String dentistName, Date visitTime);
+    void addVisit(String dentistName, Date visitDate, String visitTime);
 }

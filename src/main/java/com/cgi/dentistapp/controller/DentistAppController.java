@@ -4,7 +4,6 @@ import com.cgi.dentistapp.dto.DentistVisitDTO;
 import com.cgi.dentistapp.entity.DentistEntity;
 import com.cgi.dentistapp.service.interfaces.DentistService;
 import com.cgi.dentistapp.service.interfaces.DentistVisitService;
-import org.modelmapper.ModelMapper;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.autoconfigure.EnableAutoConfiguration;
 import org.springframework.stereotype.Controller;
@@ -16,6 +15,8 @@ import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
 
 import javax.validation.Valid;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -28,17 +29,21 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @Autowired
     private DentistService dentistService;
 
-    @Autowired
-    private ModelMapper modelMapper;
-
     private List<DentistEntity> dentists;
 
     private DentistVisitDTO dentistVisitDTO = new DentistVisitDTO();
+
+    private List<String> times = new ArrayList<>();
+
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
         registry.addViewController("/results").setViewName("results");
         dentists = dentistService.getAllDentists();
+        times.add("10:00");
+        times.add("11:00");
+        times.add("12:00");
+        times.add("13:00");
     }
 
     @GetMapping("/")
@@ -52,7 +57,7 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
             return "form";
         }
 
-        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitTime());
+        dentistVisitService.addVisit(dentistVisitDTO.getDentistName(), dentistVisitDTO.getVisitDate(), dentistVisitDTO.getVisitTime());
         return "redirect:/results";
     }
 
@@ -64,6 +69,11 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     @ModelAttribute("dentistVisitDTO")
     public DentistVisitDTO getDentistVisitDTO() {
         return dentistVisitDTO;
+    }
+
+    @ModelAttribute("times")
+    public List<String> getTimes() {
+        return times;
     }
 
     public void setDentistVisitDTO(DentistVisitDTO dentistVisitDTO) {

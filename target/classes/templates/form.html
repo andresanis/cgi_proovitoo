@@ -11,9 +11,12 @@
 <form action="#" th:action="@{/}" th:object="${dentistVisitDTO}" method="post">
 
     <table>
-        <select  name="dentistName" >
-            <option th:each="dentist : ${dentists}" th:value="${dentist.getFullName()}" th:text="${dentist.getFullName()}"></option>
-        </select>
+        <tr>
+            <p>Hambaarst</p>
+            <select  name="dentistName" >
+                <option th:each="dentist : ${dentists}" th:value="${dentist.getFullName()}" th:text="${dentist.getFullName()}"></option>
+            </select>
+        </tr>
         <!--<tr>
             <td><p th:text="#{dentist.name}">dentist.name</p></td>
             <td><input type="text" th:field="*{dentistName}"/></td>
@@ -23,15 +26,21 @@
             <td><p th:text="#{visit.date}">visit.date</p></td>
             <td
             ><div id="datepicker">
-                <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{visitTime}"/>
+                <input type="text" class="form-control" id="birthdate" autocomplete="off" th:field="*{visitDate}"/>
                 <div class="input-group-append">
                     <span class="input-group-text"><i class="far fa-calendar-alt"></i></span>
                 </div>
             </div>
             </td>
-            <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitTime}">date.error</td>
+            <td th:if="${#fields.hasErrors('visitTime')}" th:errors="*{visitDate}">date.error</td>
         </tr>
 
+        <tr>
+            <p>Viisidi aeg</p>
+        <select name="visitTime" >
+            <option th:each="time : ${times}" th:value="${time}" th:text="${time}" />
+        </select>
+        </tr>
         <tr>
             <td>
                 <button type="submit" th:text="#{register.visit}"></button>

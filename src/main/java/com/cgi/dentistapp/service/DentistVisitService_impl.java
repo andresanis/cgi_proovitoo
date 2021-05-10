@@ -21,11 +21,12 @@ public class DentistVisitService_impl implements DentistVisitService {
     DentistRepository dentistRepository;
 
     @Override
-    public void addVisit(String dentistName, Date visitTime) {
+    public void addVisit(String dentistName, Date visitDate, String visitTime ) {
         DentistVisitEntity dentistVisitEntity = new DentistVisitEntity();
         String[] arrOfStr = dentistName.split(" ");
         dentistVisitEntity.setDentistId(dentistRepository.findByFirstNameAndLastName(arrOfStr[0], arrOfStr[1]).getDentistId());
         dentistVisitEntity.setDentistName(dentistName);
+        dentistVisitEntity.setVisitDate(visitDate);
         dentistVisitEntity.setVisitTime(visitTime);
         dentistVisitRepository.save(dentistVisitEntity);
     }
