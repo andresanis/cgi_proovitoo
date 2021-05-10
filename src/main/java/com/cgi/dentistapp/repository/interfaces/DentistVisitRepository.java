@@ -9,4 +9,6 @@ import java.util.Date;
 @Repository
 public interface DentistVisitRepository extends CrudRepository<DentistVisitEntity, Long> {
 
+    DentistVisitEntity findByDentistNameAndVisitDateAndVisitTime(String dentistName, Date visitDate, String visitTime);
+
 }

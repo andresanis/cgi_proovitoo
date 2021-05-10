@@ -29,6 +29,8 @@ public class DentistVisitEntity {
         this.visitDate = visitTime;
     }
 
+    public String getVisitDateAsString() { return visitDate.toString();}
+
     public String getDentistName() {
         return dentistName;
     }
@@ -39,6 +41,10 @@ public class DentistVisitEntity {
 
     public Long getId() {
         return id;
+    }
+
+    public void setId(long id) {
+        this.id = id;
     }
 
     public void setDentistId(long dentistId) {

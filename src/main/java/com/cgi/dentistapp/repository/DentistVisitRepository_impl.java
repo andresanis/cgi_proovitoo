@@ -62,4 +62,9 @@ public class DentistVisitRepository_impl implements DentistVisitRepository {
     public void deleteAll() {
 
     }
+
+    @Override
+    public DentistVisitEntity findByDentistNameAndVisitDateAndVisitTime(String dentistName, Date visitDate, String visitTime) {
+        return null;
+    }
 }
