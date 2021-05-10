@@ -4,7 +4,6 @@ import com.cgi.dentistapp.entity.DentistEntity;
 import com.cgi.dentistapp.repository.interfaces.DentistRepository;
 import org.springframework.stereotype.Repository;
 
-import java.util.List;
 
 @Repository
 public class DentistRepository_impl implements DentistRepository {

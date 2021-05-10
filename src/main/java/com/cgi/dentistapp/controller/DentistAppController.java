@@ -20,7 +20,6 @@ import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter
 
 import javax.validation.Valid;
 import java.util.ArrayList;
-import java.util.Date;
 import java.util.List;
 
 @Controller
@@ -58,9 +57,13 @@ public class DentistAppController extends WebMvcConfigurerAdapter {
     }
 
     @GetMapping("/visits")
-    public String showAllRegisteredVisits(Model model) {
+    public String showAllRegisteredVisits(Model model, String keyword) {
         dentistVisits = dentistVisitService.getAllVisits();
-        model.addAttribute("dentistVisits", getDentistVisits());
+        if(keyword != null) {
+            model.addAttribute("dentistVisits", dentistVisitService.findByKeyword(keyword));
+        } else {
+            model.addAttribute("dentistVisits", getDentistVisits());
+        }
         return "visits";
     }
 

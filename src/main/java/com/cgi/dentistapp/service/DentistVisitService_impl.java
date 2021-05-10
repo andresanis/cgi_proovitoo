@@ -1,6 +1,5 @@
 package com.cgi.dentistapp.service;
 
-import com.cgi.dentistapp.entity.DentistEntity;
 import com.cgi.dentistapp.entity.DentistVisitEntity;
 import com.cgi.dentistapp.repository.interfaces.DentistRepository;
 import com.cgi.dentistapp.repository.interfaces.DentistVisitRepository;
@@ -63,4 +62,11 @@ public class DentistVisitService_impl implements DentistVisitService {
         dentistVisitEntity.setVisitTime(visitTime);
         dentistVisitRepository.save(dentistVisitEntity);
     }
+
+    @Override
+    public List<DentistVisitEntity> findByKeyword(String keyword) {
+        return dentistVisitRepository.findDentistVisitEntitiesByKeyword(keyword);
+    }
 }
+
+

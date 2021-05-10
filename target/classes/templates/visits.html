@@ -7,8 +7,20 @@
     <meta charset="UTF-8"/>
     <title>Title</title>
 </head>
-<body>
+<body class="mx-auto" style="width: 1100px;">
 <div th:replace="fragments/header :: header"></div>
+
+<!--<form th:object="${dentistVisitDTO}" method="get">
+    <label>
+        Otsing<input type="text" name="something" th:field="*{dentistName}"/>
+            <input type="submit" value="Search" th:href="@{/dentistSearch}"/>
+    </label>
+</form>-->
+<form th:action="@{/visits}" method="get">
+    <label>Otsing</label>
+    <input id="txtSearch" type="text" name="keyword"/>
+    <button type="submit">Search</button>
+</form>
 
 <table>
     <tr>

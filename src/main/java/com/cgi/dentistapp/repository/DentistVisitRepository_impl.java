@@ -5,6 +5,7 @@ import com.cgi.dentistapp.repository.interfaces.DentistVisitRepository;
 import org.springframework.stereotype.Repository;
 
 import java.util.Date;
+import java.util.List;
 
 @Repository
 public class DentistVisitRepository_impl implements DentistVisitRepository {
@@ -65,6 +66,11 @@ public class DentistVisitRepository_impl implements DentistVisitRepository {
 
     @Override
     public DentistVisitEntity findByDentistNameAndVisitDateAndVisitTime(String dentistName, Date visitDate, String visitTime) {
+        return null;
+    }
+
+    @Override
+    public List<DentistVisitEntity> findDentistVisitEntitiesByKeyword(String keyword) {
         return null;
     }
 }

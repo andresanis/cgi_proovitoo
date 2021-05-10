@@ -1,6 +1,5 @@
 package com.cgi.dentistapp.service.interfaces;
 
-import com.cgi.dentistapp.entity.DentistEntity;
 import com.cgi.dentistapp.entity.DentistVisitEntity;
 import org.springframework.stereotype.Service;
 
@@ -22,4 +21,6 @@ public interface DentistVisitService {
     void deleteVisit(DentistVisitEntity dentistVisitEntity);
 
     void updateVisit(long id, String dentistName, Date visitDate, String visitTime );
+
+    List<DentistVisitEntity> findByKeyword(String keyword);
 }
